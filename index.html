@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wycliff Njenga — iOS Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #111111;
+    --ink-2: #444444;
+    --ink-3: #888888;
+    --paper: #F7F6F2;
+    --white: #FFFFFF;
+    --accent: #1B2A4A;
+    --accent-light: #2E75B6;
+    --rule: #E0DED8;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247,246,242,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 300; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.85rem; font-weight: 400; color: var(--ink-2); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent-light); }
+
+  /* SECTIONS */
+  section { padding: 6rem 5vw; max-width: 1100px; margin: 0 auto; }
+  .full-width { max-width: none; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 80px;
+    max-width: none;
+    padding-left: 8vw; padding-right: 8vw;
+  }
+  .hero-eyebrow {
+    font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent-light); font-weight: 500; margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--accent-light); }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name em { font-style: italic; color: var(--accent-light); }
+  .hero-sub {
+    font-size: 1.1rem; color: var(--ink-2); max-width: 540px;
+    font-weight: 300; margin-bottom: 3rem; line-height: 1.8;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.75rem; font-size: 0.875rem;
+    font-family: var(--sans); font-weight: 500; text-decoration: none;
+    letter-spacing: 0.03em; transition: all 0.2s; cursor: pointer;
+    border: none;
+  }
+  .btn-primary { background: var(--accent); color: var(--white); }
+  .btn-primary:hover { background: var(--accent-light); }
+  .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
+  .btn-outline:hover { border-color: var(--ink-3); }
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 5rem;
+    padding-top: 3rem; border-top: 1px solid var(--rule);
+    flex-wrap: wrap;
+  }
+  .stat-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 300; color: var(--ink); }
+  .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); margin-top: 0.25rem; }
+
+  /* SECTION HEADERS */
+  .section-label {
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--ink-3); }
+  .section-title {
+    font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300; line-height: 1.15; margin-bottom: 3rem; color: var(--ink);
+  }
+
+  /* ABOUT */
+  #about .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .about-text p { font-size: 1.05rem; color: var(--ink-2); line-height: 1.85; margin-bottom: 1.25rem; font-weight: 300; }
+  .about-details { display: flex; flex-direction: column; gap: 1.25rem; padding-top: 0.5rem; }
+  .detail-row { display: flex; flex-direction: column; gap: 0.2rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--rule); }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); }
+  .detail-value { font-size: 0.95rem; color: var(--ink); font-weight: 400; }
+  .detail-value a { color: var(--accent-light); text-decoration: none; }
+  .detail-value a:hover { text-decoration: underline; }
+
+  /* EXPERIENCE */
+  #experience { background: var(--white); max-width: none; }
+  #experience .inner { max-width: 1100px; margin: 0 auto; padding: 0 5vw; }
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 180px 1fr;
+    gap: 3rem; padding: 2.5rem 0; border-bottom: 1px solid var(--rule);
+  }
+  .exp-item:first-child { border-top: 1px solid var(--rule); }
+  .exp-meta { padding-top: 0.25rem; }
+  .exp-period { font-size: 0.8rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .exp-company { font-size: 0.9rem; color: var(--accent-light); font-weight: 500; margin-top: 0.4rem; }
+  .exp-location { font-size: 0.8rem; color: var(--ink-3); margin-top: 0.25rem; }
+  .exp-role { font-family: var(--serif); font-size: 1.3rem; font-weight: 300; margin-bottom: 0.85rem; }
+  .exp-desc { font-size: 0.95rem; color: var(--ink-2); line-height: 1.8; font-weight: 300; }
+  .exp-desc li { margin-bottom: 0.5rem; margin-left: 1.2rem; }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .tag {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 0.3rem 0.7rem; border: 1px solid var(--rule);
+    color: var(--ink-3); background: var(--paper);
+  }
+
+  /* SKILLS */
+  #skills .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+  .skill-group h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-3); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
+  .skill-group ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .skill-group li { font-size: 0.92rem; color: var(--ink-2); font-weight: 300; display: flex; align-items: center; gap: 0.5rem; }
+  .skill-group li::before { content: ''; display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--accent-light); flex-shrink: 0; }
+
+  /* PROJECTS */
+  #projects { background: var(--accent); max-width: none; }
+  #projects .inner { max-width: 1100px; margin: 0 auto; padding: 0 5vw; }
+  #projects .section-label { color: rgba(255,255,255,0.4); }
+  #projects .section-label::before { background: rgba(255,255,255,0.4); }
+  #projects .section-title { color: var(--white); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5px; }
+  .project-card {
+    background: rgba(255,255,255,0.05); padding: 2.5rem;
+    border: 1px solid rgba(255,255,255,0.1); transition: background 0.2s;
+  }
+  .project-card:hover { background: rgba(255,255,255,0.09); }
+  .project-num { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: rgba(255,255,255,0.2); margin-bottom: 1.5rem; }
+  .project-name { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; color: var(--white); margin-bottom: 0.75rem; }
+  .project-desc { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.75; font-weight: 300; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem; }
+  .project-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.25rem 0.6rem; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); }
+
+  /* TESTIMONIALS */
+  #testimonials .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+  .testi-card { background: var(--white); padding: 2rem; border: 1px solid var(--rule); }
+  .testi-quote { font-family: var(--serif); font-size: 1.05rem; font-weight: 300; font-style: italic; color: var(--ink); line-height: 1.8; margin-bottom: 1.5rem; }
+  .testi-quote::before { content: '\201C'; font-size: 2rem; line-height: 0; vertical-align: -0.5rem; color: var(--accent-light); margin-right: 0.2rem; }
+  .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+  .testi-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 500; color: white; flex-shrink: 0; }
+  .testi-name { font-size: 0.875rem; font-weight: 500; color: var(--ink); }
+  .testi-role { font-size: 0.78rem; color: var(--ink-3); }
+  .testi-note { font-size: 0.78rem; color: var(--ink-3); text-align: center; margin-top: 2rem; font-style: italic; }
+
+  /* CONTACT */
+  #contact { background: var(--white); max-width: none; }
+  #contact .inner { max-width: 1100px; margin: 0 auto; padding: 0 5vw; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .contact-info p { font-size: 1rem; color: var(--ink-2); font-weight: 300; line-height: 1.85; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--ink); font-size: 0.9rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); transition: color 0.2s; }
+  .contact-link:hover { color: var(--accent-light); }
+  .contact-link-icon { width: 32px; height: 32px; border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
+  form { display: flex; flex-direction: column; gap: 1.25rem; }
+  label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); display: block; margin-bottom: 0.4rem; }
+  input, textarea {
+    width: 100%; padding: 0.875rem 1rem; border: 1px solid var(--rule);
+    background: var(--paper); font-family: var(--sans); font-size: 0.9rem;
+    color: var(--ink); transition: border-color 0.2s; resize: vertical; outline: none;
+  }
+  input:focus, textarea:focus { border-color: var(--accent-light); }
+  textarea { min-height: 120px; }
+  .btn-submit {
+    background: var(--accent); color: white; border: none; padding: 0.9rem 2rem;
+    font-family: var(--sans); font-size: 0.875rem; font-weight: 500; cursor: pointer;
+    letter-spacing: 0.04em; text-transform: uppercase; transition: background 0.2s; align-self: flex-start;
+  }
+  .btn-submit:hover { background: var(--accent-light); }
+  .form-note { font-size: 0.78rem; color: var(--ink-3); font-style: italic; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--rule); padding: 2rem 8vw;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem; color: var(--ink-3); flex-wrap: wrap; gap: 1rem;
+  }
+  footer a { color: var(--ink-3); text-decoration: none; }
+  footer a:hover { color: var(--accent-light); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp 0.7s ease forwards; }
+  .delay-1 { animation-delay: 0.1s; opacity: 0; }
+  .delay-2 { animation-delay: 0.2s; opacity: 0; }
+  .delay-3 { animation-delay: 0.35s; opacity: 0; }
+  .delay-4 { animation-delay: 0.5s; opacity: 0; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    #hero { padding-left: 1.5rem; padding-right: 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    #about .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    #contact .inner { grid-template-columns: 1fr; gap: 3rem; padding: 0 1.5rem; }
+    #experience .inner, #projects .inner { padding: 0 1.5rem; }
+    .hero-stats { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Wycliff Njenga</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow fade-up">Available for Remote Opportunities</p>
+  <h1 class="hero-name fade-up delay-1">Wycliff<br><em>Njenga</em></h1>
+  <p class="hero-sub fade-up delay-2">Senior iOS Engineer crafting high-performance mobile applications for 7+ years. Specialising in Swift, SwiftUI, and scalable architecture across travel, fintech, wellness, and SaaS.</p>
+  <div class="hero-actions fade-up delay-3">
+    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+    <a href="#experience" class="btn btn-outline">View Work</a>
+    <a href="https://bit.ly/41BBMBL" target="_blank" class="btn btn-outline">GitHub ↗</a>
+  </div>
+  <div class="hero-stats fade-up delay-4">
+    <div>
+      <div class="stat-num">7+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div>
+      <div class="stat-num">5</div>
+      <div class="stat-label">Industries</div>
+    </div>
+    <div>
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Apps Shipped</div>
+    </div>
+    <div>
+      <div class="stat-num">20%</div>
+      <div class="stat-label">Avg Crash Reduction</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">About me</p>
+  <h2 class="section-title">Building apps people<br>actually love to use</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm an iOS Engineer based in Nairobi, Kenya with 7+ years of experience building production-grade mobile applications across travel, e-commerce, fintech, wellness, and SaaS. I specialise in Swift, SwiftUI, and UIKit — and I care deeply about clean architecture, measurable performance, and user experience.</p>
+      <p>Currently at Triply.co, I develop both B2C and B2B applications serving African travel markets. Previously I led iOS engineering at Decise LLC (Chicago, US), where I rebuilt payment flows and reduced payment errors by 30%.</p>
+      <p>I've worked entirely in remote, cross-functional teams spanning Kenya, the US, and India — and I'm equally comfortable talking architecture with engineers or walking through feature trade-offs with product managers.</p>
+      <p>Blue Card eligible. Open to global remote opportunities and relocation.</p>
+    </div>
+    <div class="about-details">
+      <div class="detail-row">
+        <span class="detail-label">Location</span>
+        <span class="detail-value">Nairobi, Kenya · Open to relocation</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Email</span>
+        <span class="detail-value"><a href="mailto:wycliffnjenga19@gmail.com">wycliffnjenga19@gmail.com</a></span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Phone</span>
+        <span class="detail-value">+254 703 285 070</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">LinkedIn</span>
+        <span class="detail-value"><a href="https://bit.ly/4ltuMOB" target="_blank">linkedin.com/in/wycliffnjenga ↗</a></span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">GitHub</span>
+        <span class="detail-value"><a href="https://bit.ly/41BBMBL" target="_blank">github.com/wycliffnjenga ↗</a></span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Education</span>
+        <span class="detail-value">B.Sc. Applied Maths & Computer Science · Taita Taveta University</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Certifications</span>
+        <span class="detail-value">Google UX Designer · Google DSC Top 10 Finalist</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="full-width" style="padding: 6rem 0;">
+  <div class="inner">
+    <p class="section-label">Career</p>
+    <h2 class="section-title">Work Experience</h2>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Feb 2024 – Present</div>
+          <div class="exp-company">Triply.co</div>
+          <div class="exp-location">Nairobi, Kenya · Onsite</div>
+        </div>
+        <div>
+          <h3 class="exp-role">iOS Engineer</h3>
+          <div class="exp-desc">
+            <ul>
+              <li>Developed both B2C (event booking, packages, listings) and B2B (CRM, event creation, operational dashboards) iOS applications serving African travel markets — owning the full product lifecycle.</li>
+              <li>Improved app load times by <strong>15%</strong> and reduced crash rates by <strong>20%</strong> through targeted memory management and efficient API handling.</li>
+              <li>Led code reviews enforcing MVVM and Clean Architecture across the engineering team.</li>
+              <li>Collaborated with PMs, designers, and backend teams to ship unified booking experiences.</li>
+            </ul>
+          </div>
+          <div class="exp-tags">
+            <span class="tag">Swift</span><span class="tag">SwiftUI</span><span class="tag">UIKit</span><span class="tag">Combine</span><span class="tag">RxSwift</span><span class="tag">GraphQL</span><span class="tag">Firebase</span><span class="tag">MVVM</span><span class="tag">Clean Architecture</span><span class="tag">GCP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Mar 2023 – Feb 2024</div>
+          <div class="exp-company">Decise LLC</div>
+          <div class="exp-location">Chicago, IL, USA · Remote</div>
+        </div>
+        <div>
+          <h3 class="exp-role">Lead iOS Engineer</h3>
+          <div class="exp-desc">
+            <ul>
+              <li>Rebuilt card payment flows, introduced FlyBuy BLE feature, and implemented token-based authentication — reducing payment errors by <strong>30%</strong> and accelerating processing by <strong>20%</strong>.</li>
+              <li>Integrated gamification mechanics improving user retention and in-restaurant experience for City BBQ.</li>
+              <li>Streamlined bug triage and improved overall app stability through production-grade release processes.</li>
+            </ul>
+          </div>
+          <div class="exp-tags">
+            <span class="tag">Swift</span><span class="tag">BLE</span><span class="tag">Core Bluetooth</span><span class="tag">UIKit</span><span class="tag">SwiftUI</span><span class="tag">Tokenisation</span><span class="tag">MVVM-C</span><span class="tag">XCTest</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Jan 2022 – Apr 2023</div>
+          <div class="exp-company">Music of Wisdom</div>
+          <div class="exp-location">United States · Remote</div>
+        </div>
+        <div>
+          <h3 class="exp-role">iOS Engineer</h3>
+          <div class="exp-desc">
+            <ul>
+              <li>Built a meditation and mindfulness iOS app from scratch — full lifecycle from requirements to App Store deployment and production maintenance.</li>
+              <li>Integrated voiceovers, background music layering, and brainwave frequency players using AVFoundation.</li>
+              <li>Boosted session replays and download uptake by <strong>20%</strong> through 3+ hours of curated in-app audio content.</li>
+            </ul>
+          </div>
+          <div class="exp-tags">
+            <span class="tag">Swift</span><span class="tag">AVFoundation</span><span class="tag">UIKit</span><span class="tag">REST APIs</span><span class="tag">Audio Engineering</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Jun 2019 – Feb 2022</div>
+          <div class="exp-company">Vint</div>
+          <div class="exp-location">United States · Remote</div>
+        </div>
+        <div>
+          <h3 class="exp-role">iOS & Android Developer</h3>
+          <div class="exp-desc">Developed, maintained, and tested cross-platform e-commerce applications from concept to deployment. Contributed to UI design, backend integration, and performance optimisation.</div>
+          <div class="exp-tags"><span class="tag">Swift</span><span class="tag">iOS</span><span class="tag">Android</span><span class="tag">E-commerce</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Feb 2022 – Sep 2022</div>
+          <div class="exp-company">Postagic</div>
+          <div class="exp-location">Maharashtra, India · Remote</div>
+        </div>
+        <div>
+          <h3 class="exp-role">iOS Developer</h3>
+          <div class="exp-desc">Built and enhanced features for a social connection app on the App Store — improving messaging reliability and optimising photo sharing functionality.</div>
+          <div class="exp-tags"><span class="tag">Swift</span><span class="tag">UIKit</span><span class="tag">Social Networking</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">Expertise</p>
+  <h2 class="section-title">Skills & Technologies</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h3>Languages</h3>
+      <ul>
+        <li>Swift (7+ yrs)</li>
+        <li>Objective-C (2 yrs)</li>
+        <li>HTML / CSS (2 yrs)</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>UI Frameworks</h3>
+      <ul>
+        <li>SwiftUI (4 yrs)</li>
+        <li>UIKit (7 yrs)</li>
+        <li>RxSwift (3 yrs)</li>
+        <li>Combine (3 yrs)</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Architecture</h3>
+      <ul>
+        <li>MVVM</li>
+        <li>Clean Architecture</li>
+        <li>MVVM-C</li>
+        <li>MVC</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Networking & Data</h3>
+      <ul>
+        <li>REST APIs</li>
+        <li>GraphQL</li>
+        <li>Core Data (5 yrs)</li>
+        <li>Realm (2 yrs)</li>
+        <li>SQLite (2 yrs)</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Cloud & DevOps</h3>
+      <ul>
+        <li>GCP (5 yrs)</li>
+        <li>AWS S3 (2 yrs)</li>
+        <li>Firebase</li>
+        <li>Git / GitHub / GitLab</li>
+        <li>Fastlane (3 yrs)</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Testing & Tooling</h3>
+      <ul>
+        <li>XCTest / XCUITest</li>
+        <li>TestFlight</li>
+        <li>Instruments</li>
+        <li>Xcode</li>
+        <li>App Store Connect</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Specialisms</h3>
+      <ul>
+        <li>Core Bluetooth / BLE</li>
+        <li>AVFoundation</li>
+        <li>Alamofire</li>
+        <li>GCD / async-await</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Soft Skills</h3>
+      <ul>
+        <li>Remote collaboration</li>
+        <li>Code review leadership</li>
+        <li>Stakeholder communication</li>
+        <li>Agile / Scrum</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="full-width" style="padding: 6rem 0;">
+  <div class="inner">
+    <p class="section-label">Work</p>
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-num">01</div>
+        <h3 class="project-name">Triply.co — Travel Platform</h3>
+        <p class="project-desc">B2C booking app and B2B operator platform for the African travel market. End-to-end ownership across the full product lifecycle with measurable performance improvements.</p>
+        <div class="project-stack">
+          <span class="project-tag">Swift</span><span class="project-tag">SwiftUI</span><span class="project-tag">GraphQL</span><span class="project-tag">Firebase</span><span class="project-tag">GCP</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">02</div>
+        <h3 class="project-name">City BBQ — FlyBuy & Payments</h3>
+        <p class="project-desc">Rebuilt payment flows with BLE-based FlyBuy feature, gamification, and token-based authentication for a US restaurant chain. Reduced payment errors by 30%.</p>
+        <div class="project-stack">
+          <span class="project-tag">Swift</span><span class="project-tag">Core Bluetooth</span><span class="project-tag">BLE</span><span class="project-tag">Tokenisation</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">03</div>
+        <h3 class="project-name">Music of Wisdom — Wellness App</h3>
+        <p class="project-desc">Meditation app built from scratch featuring guided audio, brainwave frequency players, and in-app royalty-free content delivery. Boosted session replays by 20%.</p>
+        <div class="project-stack">
+          <span class="project-tag">Swift</span><span class="project-tag">AVFoundation</span><span class="project-tag">UIKit</span><span class="project-tag">REST APIs</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">04</div>
+        <h3 class="project-name">SaveONE-life — Emergency App</h3>
+        <p class="project-desc">Mobile app connecting blood donors with recipients in medical emergencies. Led full development and deployment as the iOS lead engineer.</p>
+        <div class="project-stack">
+          <span class="project-tag">Swift</span><span class="project-tag">SwiftUI</span><span class="project-tag">Firebase</span><span class="project-tag">REST APIs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <p class="section-label">What people say</p>
+  <h2 class="section-title">Testimonials</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <p class="testi-quote">Wycliff is one of the most reliable engineers I've worked with remotely. He owns problems end-to-end and communicates proactively — exactly what you need in a distributed team.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">PM</div>
+        <div>
+          <div class="testi-name">Product Manager</div>
+          <div class="testi-role">Decise LLC · Chicago, USA</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <p class="testi-quote">The performance improvements Wycliff delivered — 15% faster load times and 20% fewer crashes — had a direct impact on our customer retention metrics. Exceptional engineer.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">TL</div>
+        <div>
+          <div class="testi-name">Tech Lead</div>
+          <div class="testi-role">Triply.co · Nairobi, Kenya</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <p class="testi-quote">Wycliff built our entire app from scratch with incredible attention to audio quality and UX detail. He understood the wellness vision and translated it into a beautiful product.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">FD</div>
+        <div>
+          <div class="testi-name">Founder</div>
+          <div class="testi-role">Music of Wisdom · USA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="testi-note">* Replace these with real testimonials from colleagues or managers on LinkedIn</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="full-width" style="padding: 6rem 0;">
+  <div class="inner">
+    <div>
+      <p class="section-label">Let's talk</p>
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="contact-info" style="font-size:1rem; color:#444; font-weight:300; line-height:1.85; margin-bottom:2rem;">Open to remote iOS engineering roles, AI training contracts, and consulting. I usually respond within 24 hours.</p>
+      <div class="contact-links">
+        <a href="mailto:wycliffnjenga19@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉</div>
+          <div>
+            <div style="font-weight:500; font-size:0.875rem;">Email</div>
+            <div style="font-size:0.8rem; color:#888;">wycliffnjenga19@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://bit.ly/4ltuMOB" target="_blank" class="contact-link">
+          <div class="contact-link-icon">in</div>
+          <div>
+            <div style="font-weight:500; font-size:0.875rem;">LinkedIn</div>
+            <div style="font-size:0.8rem; color:#888;">linkedin.com/in/wycliffnjenga</div>
+          </div>
+        </a>
+        <a href="https://bit.ly/41BBMBL" target="_blank" class="contact-link">
+          <div class="contact-link-icon">⌥</div>
+          <div>
+            <div style="font-weight:500; font-size:0.875rem;">GitHub</div>
+            <div style="font-size:0.8rem; color:#888;">github.com/wycliffnjenga</div>
+          </div>
+        </a>
+        <a href="tel:+254703285070" class="contact-link">
+          <div class="contact-link-icon">☎</div>
+          <div>
+            <div style="font-weight:500; font-size:0.875rem;">Phone</div>
+            <div style="font-size:0.8rem; color:#888;">+254 703 285 070</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div>
+      <form onsubmit="handleSubmit(event)">
+        <div>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Your name" required>
+        </div>
+        <div>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="your@email.com" required>
+        </div>
+        <div>
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" placeholder="iOS role, collab, contract...">
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell me about the opportunity..." required></textarea>
+        </div>
+        <div id="form-success" style="display:none; color:#1B2A4A; font-size:0.875rem; padding:0.75rem 1rem; border:1px solid #2E75B6; background:#E6F1FB;">
+          Message sent! I'll get back to you within 24 hours.
+        </div>
+        <p class="form-note">Note: To make this form functional, connect it to Formspree, EmailJS, or any backend service.</p>
+        <button type="submit" class="btn-submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Wycliff Njenga · iOS Engineer · Nairobi, Kenya</span>
+  <div style="display:flex; gap:1.5rem;">
+    <a href="mailto:wycliffnjenga19@gmail.com">Email</a>
+    <a href="https://bit.ly/4ltuMOB" target="_blank">LinkedIn</a>
+    <a href="https://bit.ly/41BBMBL" target="_blank">GitHub</a>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('form-success').style.display = 'block';
+  e.target.reset();
+  setTimeout(() => { document.getElementById('form-success').style.display = 'none'; }, 5000);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.exp-item, .skill-group, .project-card, .testi-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
