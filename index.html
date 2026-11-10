@@ -55,11 +55,20 @@
   /* HERO */
   #hero {
     min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
+    display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    column-gap: 4rem; align-content: center; align-items: center;
     padding-top: 80px;
     max-width: none;
     padding-left: 8vw; padding-right: 8vw;
   }
+  .hero-photo { justify-self: end; width: 100%; max-width: 420px; }
+  .hero-photo img {
+    display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%;
+    border-radius: 4px; border: 1px solid var(--rule);
+    box-shadow: 0 24px 48px -24px rgba(27, 42, 74, 0.35);
+  }
+  .hero-stats { grid-column: 1 / -1; }
+  .btn-download::before { content: '↓'; font-weight: 500; }
   .hero-eyebrow {
     font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
     color: var(--accent-light); font-weight: 500; margin-bottom: 1.5rem;
@@ -227,7 +236,9 @@
   @media (max-width: 768px) {
     nav { padding: 0 1.5rem; }
     .nav-links { display: none; }
-    #hero { padding-left: 1.5rem; padding-right: 1.5rem; }
+    #hero { padding-left: 1.5rem; padding-right: 1.5rem; grid-template-columns: minmax(0, 1fr); }
+    .hero-eyebrow { letter-spacing: 0.1em; }
+    .hero-photo { order: -1; justify-self: start; max-width: 200px; margin-bottom: 2rem; }
     section { padding: 4rem 1.5rem; }
     #about .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
@@ -248,18 +259,25 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="Wycliff-Njenga-CV.pdf" download>CV ↓</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-text">
   <p class="hero-eyebrow fade-up">Available for Remote Opportunities</p>
   <h1 class="hero-name fade-up delay-1">Wycliff<br><em>Njenga</em></h1>
   <p class="hero-sub fade-up delay-2">Senior iOS Engineer crafting high-performance mobile applications for 7+ years. Specialising in Swift, SwiftUI, and scalable architecture across travel, fintech, wellness, and SaaS.</p>
   <div class="hero-actions fade-up delay-3">
     <a href="#contact" class="btn btn-primary">Get in Touch</a>
     <a href="#experience" class="btn btn-outline">View Work</a>
-    <a href="https://bit.ly/41BBMBL" target="_blank" class="btn btn-outline">GitHub ↗</a>
+    <a href="Wycliff-Njenga-CV.pdf" download class="btn btn-outline btn-download">Download CV</a>
+    <a href="https://github.com/wykeenjenga" target="_blank" rel="noopener" class="btn btn-outline">GitHub ↗</a>
+  </div>
+  </div>
+  <div class="hero-photo fade-up delay-2">
+    <img src="wycliff-njenga.jpg" alt="Wycliff Njenga, Senior iOS Engineer" width="420" height="525">
   </div>
   <div class="hero-stats fade-up delay-4">
     <div>
@@ -307,11 +325,11 @@
       </div>
       <div class="detail-row">
         <span class="detail-label">LinkedIn</span>
-        <span class="detail-value"><a href="https://bit.ly/4ltuMOB" target="_blank">linkedin.com/in/wycliffnjenga ↗</a></span>
+        <span class="detail-value"><a href="https://bit.ly/4ltuMOB" target="_blank">linkedin.com/in/wycliff-njenga ↗</a></span>
       </div>
       <div class="detail-row">
         <span class="detail-label">GitHub</span>
-        <span class="detail-value"><a href="https://bit.ly/41BBMBL" target="_blank">github.com/wycliffnjenga ↗</a></span>
+        <span class="detail-value"><a href="https://bit.ly/41BBMBL" target="_blank">github.com/wykeenjenga ↗</a></span>
       </div>
       <div class="detail-row">
         <span class="detail-label">Education</span>
@@ -608,14 +626,21 @@
           <div class="contact-link-icon">in</div>
           <div>
             <div style="font-weight:500; font-size:0.875rem;">LinkedIn</div>
-            <div style="font-size:0.8rem; color:#888;">linkedin.com/in/wycliffnjenga</div>
+            <div style="font-size:0.8rem; color:#888;">linkedin.com/in/wycliff-njenga</div>
           </div>
         </a>
         <a href="https://bit.ly/41BBMBL" target="_blank" class="contact-link">
           <div class="contact-link-icon">⌥</div>
           <div>
             <div style="font-weight:500; font-size:0.875rem;">GitHub</div>
-            <div style="font-size:0.8rem; color:#888;">github.com/wycliffnjenga</div>
+            <div style="font-size:0.8rem; color:#888;">github.com/wykeenjenga</div>
+          </div>
+        </a>
+        <a href="Wycliff-Njenga-CV.pdf" download class="contact-link">
+          <div class="contact-link-icon">↓</div>
+          <div>
+            <div style="font-weight:500; font-size:0.875rem;">Download CV</div>
+            <div style="font-size:0.8rem; color:#888;">PDF, updated November 2026</div>
           </div>
         </a>
         <a href="tel:+254703285070" class="contact-link">
