@@ -177,6 +177,9 @@
   .project-name { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; color: var(--white); margin-bottom: 0.75rem; }
   .project-desc { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.75; font-weight: 300; }
   .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem; }
+  .project-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.25rem; }
+  .project-links a { font-size: 0.8rem; color: #8FB8E8; text-decoration: none; letter-spacing: 0.03em; }
+  .project-links a:hover { color: var(--white); text-decoration: underline; }
   .project-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.25rem 0.6rem; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); }
 
   /* TESTIMONIALS */
@@ -268,7 +271,7 @@
   <div class="hero-text">
   <p class="hero-eyebrow fade-up">Available for Remote Opportunities</p>
   <h1 class="hero-name fade-up delay-1">Wycliff<br><em>Njenga</em></h1>
-  <p class="hero-sub fade-up delay-2">Senior iOS Engineer crafting high-performance mobile applications for 7+ years. Specialising in Swift, SwiftUI, and scalable architecture across travel, fintech, wellness, and SaaS.</p>
+  <p class="hero-sub fade-up delay-2">Senior iOS Engineer crafting high-performance mobile applications for 7+ years. Specialising in Swift and SwiftUI, with Android in Kotlin and Jetpack Compose, across travel, fintech, wellness, and SaaS.</p>
   <div class="hero-actions fade-up delay-3">
     <a href="#contact" class="btn btn-primary">Get in Touch</a>
     <a href="#experience" class="btn btn-outline">View Work</a>
@@ -453,17 +456,48 @@
       <h3>Languages</h3>
       <ul>
         <li>Swift (7+ yrs)</li>
+        <li>Kotlin</li>
         <li>Objective-C (2 yrs)</li>
+        <li>Java</li>
+        <li>TypeScript / JavaScript</li>
+        <li>Dart</li>
         <li>HTML / CSS (2 yrs)</li>
+        <li>SQL</li>
       </ul>
     </div>
     <div class="skill-group">
-      <h3>UI Frameworks</h3>
+      <h3>iOS</h3>
       <ul>
         <li>SwiftUI (4 yrs)</li>
         <li>UIKit (7 yrs)</li>
-        <li>RxSwift (3 yrs)</li>
         <li>Combine (3 yrs)</li>
+        <li>RxSwift (3 yrs)</li>
+        <li>AppKit (macOS)</li>
+        <li>WidgetKit</li>
+        <li>StoreKit 2</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Android</h3>
+      <ul>
+        <li>Jetpack Compose</li>
+        <li>XML layouts / Views</li>
+        <li>Coroutines &amp; Flow</li>
+        <li>Hilt / Dagger</li>
+        <li>Room &amp; DataStore</li>
+        <li>Retrofit / OkHttp / Ktor</li>
+        <li>WorkManager &amp; Navigation</li>
+        <li>Kotlin Multiplatform (KMP)</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Cross-platform &amp; Web</h3>
+      <ul>
+        <li>Flutter</li>
+        <li>React Native (Expo)</li>
+        <li>React</li>
+        <li>HTML5 / CSS3</li>
+        <li>Responsive web</li>
       </ul>
     </div>
     <div class="skill-group">
@@ -473,10 +507,11 @@
         <li>Clean Architecture</li>
         <li>MVVM-C</li>
         <li>MVC</li>
+        <li>Modular Swift Packages</li>
       </ul>
     </div>
     <div class="skill-group">
-      <h3>Networking & Data</h3>
+      <h3>Networking &amp; Data</h3>
       <ul>
         <li>REST APIs</li>
         <li>GraphQL</li>
@@ -486,32 +521,54 @@
       </ul>
     </div>
     <div class="skill-group">
-      <h3>Cloud & DevOps</h3>
+      <h3>Backend &amp; Cloud</h3>
       <ul>
+        <li>Supabase (Postgres, Auth, Edge Functions)</li>
+        <li>Firebase</li>
         <li>GCP (5 yrs)</li>
         <li>AWS S3 (2 yrs)</li>
-        <li>Firebase</li>
-        <li>Git / GitHub / GitLab</li>
-        <li>Fastlane (3 yrs)</li>
+        <li>Vapor (1 yr)</li>
       </ul>
     </div>
     <div class="skill-group">
-      <h3>Testing & Tooling</h3>
+      <h3>DevOps &amp; Tooling</h3>
+      <ul>
+        <li>Git / GitHub / GitLab</li>
+        <li>Fastlane (3 yrs)</li>
+        <li>Jenkins</li>
+        <li>CocoaPods / SPM / Gradle</li>
+        <li>Xcode / Android Studio</li>
+        <li>TestFlight / App Store Connect</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Testing</h3>
       <ul>
         <li>XCTest / XCUITest</li>
-        <li>TestFlight</li>
-        <li>Instruments</li>
-        <li>Xcode</li>
-        <li>App Store Connect</li>
+        <li>Unit &amp; UI testing</li>
+        <li>Instruments profiling</li>
+        <li>Firebase Crashlytics</li>
       </ul>
     </div>
     <div class="skill-group">
       <h3>Specialisms</h3>
       <ul>
         <li>Core Bluetooth / BLE</li>
+        <li>Payments &amp; tokenisation</li>
         <li>AVFoundation</li>
-        <li>Alamofire</li>
+        <li>MapKit / Core Location</li>
+        <li>Push notifications (APNs, FCM)</li>
         <li>GCD / async-await</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>AI &amp; LLMs</h3>
+      <ul>
+        <li>LLM code evaluation</li>
+        <li>RLHF response ranking</li>
+        <li>Prompt &amp; rubric writing</li>
+        <li>Data annotation</li>
+        <li>Anthropic Claude API</li>
       </ul>
     </div>
     <div class="skill-group">
@@ -534,30 +591,101 @@
     <div class="projects-grid">
       <div class="project-card">
         <div class="project-num">01</div>
-        <h3 class="project-name">Triply.co — Travel Platform</h3>
-        <p class="project-desc">B2C booking app and B2B operator platform for the African travel market. End-to-end ownership across the full product lifecycle with measurable performance improvements.</p>
+        <h3 class="project-name">Slim Chickens — Mobile Ordering</h3>
+        <p class="project-desc">Native SwiftUI ordering app for the US restaurant chain: menu discovery, cart, promo codes, upsells, favourites, offers and rewards, plus a home-screen widget. Top contributor to the iOS codebase.</p>
         <div class="project-stack">
-          <span class="project-tag">Swift</span><span class="project-tag">SwiftUI</span><span class="project-tag">GraphQL</span><span class="project-tag">Firebase</span><span class="project-tag">GCP</span>
+          <span class="project-tag">Swift</span><span class="project-tag">SwiftUI</span><span class="project-tag">Combine</span><span class="project-tag">WidgetKit</span><span class="project-tag">Braze</span><span class="project-tag">Amplitude</span><span class="project-tag">MapKit</span>
         </div>
+        <div class="project-links"><a href="https://apps.apple.com/us/app/slim-chickens/id1244055810" target="_blank" rel="noopener">App Store ↗</a></div>
       </div>
       <div class="project-card">
         <div class="project-num">02</div>
-        <h3 class="project-name">City BBQ — FlyBuy & Payments</h3>
-        <p class="project-desc">Rebuilt payment flows with BLE-based FlyBuy feature, gamification, and token-based authentication for a US restaurant chain. Reduced payment errors by 30%.</p>
+        <h3 class="project-name">City BBQ — Ordering, FlyBuy &amp; Payments</h3>
+        <p class="project-desc">iOS and iPadOS ordering app with loyalty at its core. Rebuilt the card payment flow, added BLE-based FlyBuy pickup, gamification and token-based authentication. Payment errors down 30%.</p>
         <div class="project-stack">
-          <span class="project-tag">Swift</span><span class="project-tag">Core Bluetooth</span><span class="project-tag">BLE</span><span class="project-tag">Tokenisation</span>
+          <span class="project-tag">Swift</span><span class="project-tag">iPadOS</span><span class="project-tag">Core Bluetooth</span><span class="project-tag">BLE</span><span class="project-tag">Tokenisation</span>
         </div>
+        <div class="project-links"><a href="https://apps.apple.com/us/app/city-barbeque/id979145837" target="_blank" rel="noopener">App Store ↗</a></div>
       </div>
       <div class="project-card">
         <div class="project-num">03</div>
+        <h3 class="project-name">Triply.co — Travel Platform</h3>
+        <p class="project-desc">B2C booking app and B2B operator platform (CRM, event tools, dashboards) for African travel markets, on iOS and Android. 15% faster load times and 20% fewer crashes.</p>
+        <div class="project-stack">
+          <span class="project-tag">Swift</span><span class="project-tag">SwiftUI</span><span class="project-tag">Kotlin</span><span class="project-tag">Jetpack Compose</span><span class="project-tag">Flutter</span><span class="project-tag">GraphQL</span><span class="project-tag">Firebase</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">04</div>
+        <h3 class="project-name">KittoCleaner — Mac &amp; iPhone Cleaner</h3>
+        <p class="project-desc">Storage cleaner for Mac and iPhone from one SwiftUI codebase: Smart Clean, duplicate finder, disk space analyser, Photos cleanup and an AI assistant, with licensing, StoreKit and a Supabase backend.</p>
+        <div class="project-stack">
+          <span class="project-tag">SwiftUI</span><span class="project-tag">AppKit</span><span class="project-tag">StoreKit</span><span class="project-tag">Supabase</span><span class="project-tag">Sparkle</span><span class="project-tag">Claude API</span>
+        </div>
+        <div class="project-links"><a href="https://kittocleaner.com" target="_blank" rel="noopener">kittocleaner.com ↗</a></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">05</div>
+        <h3 class="project-name">mynomp — Accountability Focus App</h3>
+        <p class="project-desc">iPhone app and responsive web platform that pairs you with a buddy for live focus sessions, friendly promises and streaks.</p>
+        <div class="project-stack">
+          <span class="project-tag">Swift</span><span class="project-tag">SwiftUI</span><span class="project-tag">Kotlin</span><span class="project-tag">Supabase</span><span class="project-tag">Web</span>
+        </div>
+        <div class="project-links"><a href="https://www.mynomp.com" target="_blank" rel="noopener">mynomp.com ↗</a></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">06</div>
+        <h3 class="project-name">Useless — Social App</h3>
+        <p class="project-desc">Playful SwiftUI social network with friends, moderated chats, group games and per-category privacy, built on Supabase Auth, Postgres with Row Level Security and Edge Functions.</p>
+        <div class="project-stack">
+          <span class="project-tag">SwiftUI</span><span class="project-tag">StoreKit 2</span><span class="project-tag">Supabase</span><span class="project-tag">APNs</span><span class="project-tag">Crashlytics</span>
+        </div>
+        <div class="project-links"><a href="https://useusless.com" target="_blank" rel="noopener">useusless.com ↗</a></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">07</div>
+        <h3 class="project-name">Kito UI Libraries</h3>
+        <p class="project-desc">Open-source SwiftUI component libraries shipped as Swift Packages: themeable buttons, form fields with phone country picker and OTP, and prebuilt sign-in, profile, M-Pesa and card checkout screens.</p>
+        <div class="project-stack">
+          <span class="project-tag">SwiftUI</span><span class="project-tag">Swift Package Manager</span><span class="project-tag">Design Systems</span>
+        </div>
+        <div class="project-links"><a href="https://github.com/wykeenjenga/KitoButtons" target="_blank" rel="noopener">KitoButtons ↗</a><a href="https://github.com/wykeenjenga/KitoFields" target="_blank" rel="noopener">KitoFields ↗</a><a href="https://github.com/wykeenjenga/KitoScreens" target="_blank" rel="noopener">KitoScreens ↗</a></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">08</div>
         <h3 class="project-name">Music of Wisdom — Wellness App</h3>
-        <p class="project-desc">Meditation app built from scratch featuring guided audio, brainwave frequency players, and in-app royalty-free content delivery. Boosted session replays by 20%.</p>
+        <p class="project-desc">Meditation app built from scratch with guided audio, brainwave frequency players and in-app royalty-free content. Boosted session replays by 20%.</p>
         <div class="project-stack">
           <span class="project-tag">Swift</span><span class="project-tag">AVFoundation</span><span class="project-tag">UIKit</span><span class="project-tag">REST APIs</span>
         </div>
       </div>
       <div class="project-card">
-        <div class="project-num">04</div>
+        <div class="project-num">09</div>
+        <h3 class="project-name">KittoPesa — Wallet Demo</h3>
+        <p class="project-desc">React Native (Expo) wallet demo with M-Pesa, card and Apple Pay style checkout flows.</p>
+        <div class="project-stack">
+          <span class="project-tag">React Native</span><span class="project-tag">Expo</span><span class="project-tag">TypeScript</span>
+        </div>
+        <div class="project-links"><a href="https://github.com/wykeenjenga/KittoPesa" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">10</div>
+        <h3 class="project-name">Postagic — Social App</h3>
+        <p class="project-desc">Social connection app on the App Store. Improved messaging reliability and optimised photo sharing.</p>
+        <div class="project-stack">
+          <span class="project-tag">Swift</span><span class="project-tag">UIKit</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">11</div>
+        <h3 class="project-name">Vint — E-commerce Apps</h3>
+        <p class="project-desc">Developed, maintained and tested iOS and Android e-commerce apps from concept to deployment.</p>
+        <div class="project-stack">
+          <span class="project-tag">Swift</span><span class="project-tag">Android</span><span class="project-tag">E-commerce</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">12</div>
         <h3 class="project-name">SaveONE-life — Emergency App</h3>
         <p class="project-desc">Mobile app connecting blood donors with recipients in medical emergencies. Led full development and deployment as the iOS lead engineer.</p>
         <div class="project-stack">
